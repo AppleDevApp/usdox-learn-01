@@ -21,7 +21,7 @@ public class UsdoxLearnEurekaRibbonApplication {
 
     @Bean
     @LoadBalanced
-    RestTemplate restTemplate() {
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
