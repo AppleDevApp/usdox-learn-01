@@ -1,9 +1,18 @@
 package com.ucucs.usdoxlearnroutezuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.exception.ZuulException;
+import com.netflix.zuul.context.RequestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-public class CheckAuthFilter extends ZuulFilter {
+import javax.servlet.http.HttpServletRequest;
+
+@Component
+public class PreRequestLogFilter extends ZuulFilter {
+
+    private static final Logger log = LoggerFactory.getLogger(PreRequestLogFilter.class);
+
     @Override
     public String filterType() {
         return "pre";
@@ -20,7 +29,10 @@ public class CheckAuthFilter extends ZuulFilter {
     }
 
     @Override
-    public Object run() throws ZuulException {
+    public Object run() {
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        log.info(String.format("send %s to %s", request.getMethod(), request.getRequestURL().toString()));
         return null;
     }
 }
