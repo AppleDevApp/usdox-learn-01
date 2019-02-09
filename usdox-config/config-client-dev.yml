@@ -1,4 +1,4 @@
 app:
   author: Master Bob
 
-username: Hello
+username: Hello ${app.author}
