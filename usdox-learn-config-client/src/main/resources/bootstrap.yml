@@ -1,0 +1,12 @@
+server:
+  port: 9087
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      profile: dev
+      uri: http://localhost:9086
+      label: master
+  profiles:
+    active: dev
