@@ -1,4 +1,4 @@
 app:
   author: Master Bob
 
-username: Hello ${app.author} Auto Refresh
+username: Hello ${app.author} Back
