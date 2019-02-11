@@ -1,0 +1,23 @@
+server:
+  port: 9088
+spring:
+  application:
+    name: route-gateway
+  cloud:
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+    registry-fetch-interval-seconds: 10000
+    instance-id: ${spring.application.name}-${eureka.instance.ip-address}-${server.port}-${random.value}
+    lease-renewal-interval-in-seconds: 10000
+    lease-expiration-duration-in-seconds: 30000
